@@ -63,6 +63,10 @@ Player.prototype.update = function() {
             }
         }
     }
+    
+    if (this.collide(allEnemies) === true) {
+        this.reset();
+    }
 };
 
 //function needs a parameter, the key what we pressed
@@ -86,6 +90,17 @@ Player.prototype.reset = function() {
     this.x = 200;
     this.y = 400;
 };
+
+Player.prototype.collide = function(enemy){
+    for (var i=0, il=allEnemies.length; i < il; i++){
+        if (allEnemies[i].x < this.x + 40 &&
+            allEnemies[i].x + 55 > this.x &&
+            allEnemies[i].y < this.y + 55 &&
+            40 + allEnemies[i].y > this.y){
+            return true;
+        }
+    }
+}
 
 // Now instantiate your objects.
 
