@@ -6,9 +6,10 @@ var Enemy = function(x, y, speed) {
     this.speed = speed;
 };
 
-function makeRandomSpeed(min,max) {
-     return Math.floor(Math.random()*(max-min+1)+min);
- }
+function makeRandomSpeed() {
+    var speedArray = [30,50,70,90,110,130,150,170,190,210,230];
+    return speedArray[Math.floor(Math.random() * speedArray.length)];
+}
 
 function makeRandomY() {
     var yArray = [60, 145, 230];
@@ -29,7 +30,7 @@ Enemy.prototype.render = function() {ctx.drawImage(Resources.get(this.sprite), t
 Enemy.prototype.reset = function() {
     this.x = -2;
     this.y = makeRandomY();
-    this.speed = makeRandomSpeed(min,max);
+    this.speed = makeRandomSpeed();
 };
 
 // Now write your own player class
@@ -41,7 +42,9 @@ var Player = function(playerX, playerY, playerSpeed){
     this.speed = playerSpeed;
 };
 
-Player.prototype.render = function() {ctx.drawImage(Resources.get(this.sprite), this.x, this.y);};
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 Player.prototype.update = function() {
     if (this.y === -50) {
@@ -84,7 +87,7 @@ Player.prototype.handleInput = function(key_pressed)  {
 }
 
 Player.prototype.reset = function() {
-    this.x = 200;
+    this.x = 300;
     this.y = 400;
 };
 
@@ -103,12 +106,12 @@ Player.prototype.collide = function(enemy){
 
 var allEnemies = [];
 
-for (var i = 0; i < 5; i++) {
-    var enemy = new Enemy(-3, makeRandomY(), makeRandomSpeed(min, max));
+for (var i = 0; i < 7; i++) {
+    var enemy = new Enemy(-3, makeRandomY(), makeRandomSpeed());
     allEnemies.push(enemy);
 };
 
-var player = new Player(200,400,100);
+var player = new Player(300,400,100);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
