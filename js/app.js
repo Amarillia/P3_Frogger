@@ -6,11 +6,9 @@ var Enemy = function(x, y, speed) {
     this.speed = speed;
 };
 
-function makeRandomSpeed() {
-    var speedArray = [30, 50, 70, 90, 120, 180, 220];
-    var randSpeed = speedArray[Math.floor(Math.random() * speedArray.length)];
-    return randSpeed;
-}
+function makeRandomSpeed(min,max) {
+     return Math.floor(Math.random()*(max-min+1)+min);
+ }
 
 function makeRandomY() {
     var yArray = [60, 145, 230];
