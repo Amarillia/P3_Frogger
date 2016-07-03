@@ -23,7 +23,13 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        scoreBoardElement = document.createElement("div"),
         lastTime;
+
+         // Add a div to display the scoreboard.
+    scoreBoardElement.id = "scoreBoard";
+    scoreBoardElement.innerHTML = "";
+    doc.body.appendChild(scoreBoardElement);  
 
     canvas.width = 707;
     canvas.height = 606;
@@ -95,6 +101,8 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        scoreBoard.update();
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -180,4 +188,6 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+    global.scoreBoardElement = scoreBoardElement;
+
 })(this);
