@@ -12,8 +12,7 @@ function makeRandomSpeed(min,max) {
 
 function makeRandomY() {
     var yArray = [60, 145, 230];
-    var randY = yArray[Math.floor(Math.random() * yArray.length)];
-    return randY;
+    return yArray[Math.floor(Math.random() * yArray.length)];
 }
 
 Enemy.prototype.update = function(dt) {
@@ -30,7 +29,7 @@ Enemy.prototype.render = function() {ctx.drawImage(Resources.get(this.sprite), t
 Enemy.prototype.reset = function() {
     this.x = -2;
     this.y = makeRandomY();
-    this.speed = makeRandomSpeed();
+    this.speed = makeRandomSpeed(min,max);
 };
 
 // Now write your own player class
@@ -105,7 +104,7 @@ Player.prototype.collide = function(enemy){
 var allEnemies = [];
 
 for (var i = 0; i < 5; i++) {
-    var enemy = new Enemy(-3, makeRandomY(), makeRandomSpeed());
+    var enemy = new Enemy(-3, makeRandomY(), makeRandomSpeed(min, max));
     allEnemies.push(enemy);
 };
 
