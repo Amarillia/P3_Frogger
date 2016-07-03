@@ -48,12 +48,12 @@ Player.prototype.update = function() {
     if (this.y === -50) {
         this.reset(); //reset if player when reach water // why it isn't working with lower values??
     }
-    else if (this.y > 400)  //player can not go lower than starting position
+    else if (this.y > 400)  //player reach the bottom of the canvas, go back to the starting position
     {this.y = 400;}
-    else if (this.x > 450) //if the player passed on the right side, appear again on left side
-    {this.x = -50;}
-    else if (this.x < -50) //if the player passes on the left side, appear again on right side
-    {this.x = 450;}
+    else if (this.x > 600) //if the player reach the right side, can't move out from the canvas
+    {this.x = 600;}
+    else if (this.x < 0) //if the player reach the left side, can't move out from the canvas
+    {this.x = 0;}
     else {
         for (var i = 0; i < allEnemies.length; i++) {
             if ((allEnemies[i].x > this.x - 70 && allEnemies[i].x < this.x + 50) && (allEnemies[i].y == this.y)) 
