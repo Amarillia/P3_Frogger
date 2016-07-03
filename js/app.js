@@ -40,6 +40,8 @@ var Player = function(playerX, playerY, playerSpeed){
     this.x = playerX;
     this.y = playerY;
     this.speed = playerSpeed;
+    this.lives = 3;
+    this.score = 0;
 };
 
 Player.prototype.render = function() {
@@ -48,6 +50,7 @@ Player.prototype.render = function() {
 
 Player.prototype.update = function() {
     if (this.y === -50) {
+        this.score +=10;
         this.reset(); //reset if player when reach water // why it isn't working with lower values??
     }
     else if (this.y > 400)  //player reach the bottom of the canvas, go back to the starting position
@@ -64,9 +67,17 @@ Player.prototype.update = function() {
         }
     }
     
+    //if the player hit it means 10 points deducted and loses 1 life
+    //if he/she runs out from points and lives, both values are stay 0.
     if (this.collide(allEnemies) === true) {
+        this.lives--;
+        this.score-=10;
         this.reset();
-    }
+        if (this.score < 1){
+            this.score = 0;}
+        if (this.lives < 1){
+            this.lives = 0;} 
+    };
 };
 
 //function needs a parameter, the key what we pressed
@@ -131,7 +142,9 @@ var ScoreBoard = function() {
 
 // Update the scoreboard
 ScoreBoard.prototype.update = function() {
-    scoreBoardElement.innerHTML = this.message;
+    scoreBoardElement.innerHTML = this.message + 
+    "<br><div id='lives'>" + player.lives + " LIVES</div>  " +
+    "<div id='score'>" + "SCORE: " + player.score + "</div>";
 };
 
 // Create scoreBoard
