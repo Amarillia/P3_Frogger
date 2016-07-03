@@ -124,3 +124,16 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+var ScoreBoard = function() {
+    this.message = "Win the game, Get to the Water!";
+};
+
+// Update the scoreboard
+ScoreBoard.prototype.update = function() {
+    scoreBoardElement.innerHTML = this.message;
+};
+
+// Create scoreBoard
+
+var scoreBoard = new ScoreBoard();
