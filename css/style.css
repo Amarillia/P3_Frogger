@@ -1,8 +1,30 @@
 body {
 	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera"; 
-    text-align: center;
-    margin-top: 20px;
-    background-color: #f7d335;
+	text-align: center;
+	margin-top: 20px;
+	background-color: #f7d335;
+}
+
+#lives {
+	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera"; 
+	display: inline;
+	position: absolute;
+	font-size:  18px;
+	font-weight: bold;
+	margin: 40px 0 0 200px;
+	color: #fffafa;
+	text-align: right;
+}
+
+#score {
+	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera"; 
+	display: inline;
+	position: absolute;
+	font-size:  18px;
+	font-weight: bold;
+	margin: 40px 0 0 -300px;
+	color: #fffafa;
+	text-align: left;
 }
 
 canvas {
