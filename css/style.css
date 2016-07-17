@@ -3,6 +3,8 @@ body {
 	text-align: center;
 	margin-top: 20px;
 	background-color: #f7d335;
+	background-image: url("../images/background.png");
+
 }
 
 #lives {
