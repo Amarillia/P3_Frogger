@@ -1,3 +1,6 @@
+var canvas_width = 707;
+
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
@@ -33,15 +36,18 @@ Enemy.prototype.reset = function() {
     this.speed = makeRandomSpeed();
 };
 
-// Now write your own player class
+// ----------------------Player class
 
 var Player = function(playerX, playerY, playerSpeed){
-    this.sprite = 'images/char-boy.png';
+    //random character at the start of the game
+    this.sprite = playerSprites[Math.floor(Math.random() * playerSprites.length)];
     this.x = playerX;
     this.y = playerY;
     this.speed = playerSpeed;
     this.lives = 3;
     this.score = 0;
+    // Set game_over parameter to false on instantiation
+    this.GameEnd = false;
 };
 
 Player.prototype.render = function() {
@@ -80,7 +86,9 @@ Player.prototype.update = function() {
     };
 };
 
-//function needs a parameter, the key what we pressed
+
+
+// ----------------------function for keys pressed
 Player.prototype.handleInput = function(key_pressed)  {
     if (key_pressed === 'up') {
         this.y -= 90;
@@ -94,6 +102,9 @@ Player.prototype.handleInput = function(key_pressed)  {
     } else if (key_pressed === 'right') {
         this.x += 100;
         console.log("Right");
+    }else if (key_pressed == 'c') {
+        // Change the player sprite image
+        this.sprite = playerSprites[Math.floor(Math.random() * playerSprites.length)];
     }
 }
 
@@ -110,10 +121,15 @@ Player.prototype.collide = function(enemy){
             40 + allEnemies[i].y > this.y){
             return true;
         }
+        if (this.lives === 0) {
+        // Remove the key input listener to prevent player from moving after gameover.
+        document.removeEventListener('keyup', passKeyUpValue);
+        this.reset();
+        }
     }
 }
 
-// Now instantiate your objects.
+// -------------------------------Instantiate Objects.
 
 var allEnemies = [];
 
@@ -121,6 +137,8 @@ for (var i = 0; i < 7; i++) {
     var enemy = new Enemy(-3, makeRandomY(), makeRandomSpeed());
     allEnemies.push(enemy);
 };
+
+//New player created at the starting point
 
 var player = new Player(300,400,100);
 
@@ -131,7 +149,8 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        67: 'c'
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
@@ -140,11 +159,20 @@ var ScoreBoard = function() {
     this.message = "Win the game, Get to the Water!";
 };
 
+// -----------------------------------Scoreboard class
+
+// Display lives and messages
+var ScoreBoard = function() {
+    this.message = "Win the game, Get to the Water!";
+};
+
 // Update the scoreboard
 ScoreBoard.prototype.update = function() {
-    scoreBoardElement.innerHTML = this.message + 
+    scoreBoardElement.innerHTML = this.message +
+    "<br>Press 'C' to change character" +
+    "<br>Press F5 to start over."  +
     "<br><div id='lives'>" + player.lives + " LIVES</div>  " +
-    "<div id='score'>" + "SCORE: " + player.score + "</div>";
+    "<div id='score'>" + "SCORE: " + player.score + "</div>"
 };
 
 // Create scoreBoard
