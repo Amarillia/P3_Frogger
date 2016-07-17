@@ -37,7 +37,12 @@ Enemy.prototype.reset = function() {
 };
 
 // ----------------------Player class
-
+var playerSprites = ['images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'];
+        
 var Player = function(playerX, playerY, playerSpeed){
     //random character at the start of the game
     this.sprite = playerSprites[Math.floor(Math.random() * playerSprites.length)];
