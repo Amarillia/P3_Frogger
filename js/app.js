@@ -99,6 +99,9 @@ Player.prototype.render = function(){
     if (this.lives > 0 && this.score > 90){
         gameWon();
         allEnemies = [];
+        // Remove the key input listener to prevent player from moving after gameover
+        document.removeEventListener('keyup', passKeyUpValue);
+
     };
     if (this.score < 1){
         this.score = 0;}
@@ -106,6 +109,9 @@ Player.prototype.render = function(){
         this.lives = 0;
         loseGame(); 
         allEnemies = [];
+        // Remove the key input listener to prevent player from moving after gameover
+        document.removeEventListener('keyup', passKeyUpValue);
+
     };
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -164,8 +170,6 @@ Player.prototype.checkCollisions = function(enemy){
             return true;
         }
         if (this.lives === 0){
-        // Remove the key input listener to prevent player from moving after gameover.
-        document.removeEventListener('keyup', passKeyUpValue);
         this.reset();
         }
     }
