@@ -86,7 +86,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        //checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -102,7 +102,6 @@ var Engine = (function(global) {
         });
         player.update();
         scoreBoard.update();
-
     }
 
     /* This function initially draws the "game level", it will then call
@@ -143,7 +142,9 @@ var Engine = (function(global) {
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-
+ /*       // User Selector.png image as the player starting location.
+        ctx.drawImage(Resources.get('images/Selector.png'), 101 * 2, 83 * 4 + 44);
+*/
         renderEntities();
     }
 
@@ -151,6 +152,8 @@ var Engine = (function(global) {
      * tick. Its purpose is to then call the render functions you have defined
      * on your enemy and player entities within app.js
      */
+
+
     function renderEntities() {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
@@ -158,7 +161,6 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-
         player.render();
     }
 
@@ -192,6 +194,7 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-    global.scoreBoardElement = scoreBoardElement;
 
+        // Provide access to the scoreboard element through the global variable
+    global.scoreBoardElement = scoreBoardElement;
 })(this);
