@@ -1,30 +1,33 @@
 body {
-	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera"; 
-	text-align: center;
-	margin-top: 20px;
-	background-color: #f7d335;
-	background-image: url("../images/background.png");
-
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin: 20px auto 20px auto;
+   	font-size:  1.5em;
+   	font-weight: 700;
+    background-color: #f7d335;
+    background-image: url("../images/background.png");
 }
 
 #lives {
-	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera"; 
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
 	display: inline;
 	position: absolute;
-	font-size:  18px;
-	font-weight: bold;
+	font-size:  1em;
+	font-weight: 700;
 	margin: 40px 0 0 200px;
+	padding: 5px;
 	color: #fffafa;
 	text-align: right;
 }
 
 #score {
-	font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera"; 
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
 	display: inline;
 	position: absolute;
-	font-size:  18px;
-	font-weight: bold;
+	font-size:  1em;
+	font-weight: 700;
 	margin: 40px 0 0 -300px;
+	padding: 5px;
 	color: #fffafa;
 	text-align: left;
 }
