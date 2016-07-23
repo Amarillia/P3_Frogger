@@ -101,7 +101,6 @@ Player.prototype.render = function(){
         allEnemies = [];
         // Remove the key input listener to prevent player from moving after gameover
         document.removeEventListener('keyup', passKeyUpValue);
-
     };
     if (this.score < 1){
         this.score = 0;}
@@ -111,7 +110,6 @@ Player.prototype.render = function(){
         allEnemies = [];
         // Remove the key input listener to prevent player from moving after gameover
         document.removeEventListener('keyup', passKeyUpValue);
-
     };
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
