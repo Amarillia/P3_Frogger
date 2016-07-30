@@ -1,11 +1,16 @@
 body {
-	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
     text-align: center;
     margin: 20px auto 20px auto;
-   	font-size:  1.5em;
-   	font-weight: 700;
+    font-size:  1.5em;
+    font-weight: 700;
     background-color: #f7d335;
     background-image: url("../images/background.png");
+    background-image: url("../images/background.png") no-repeat center center fixed;;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #lives {
