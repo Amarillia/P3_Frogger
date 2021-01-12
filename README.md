@@ -1,6 +1,6 @@
 # Frogger (Clone)!
 
-This is the source code for my take on the classic arcade game, Frogger (and you can play the game [here](http://htmlpreview.github.io/?https://github.com/Amarillia/P3_Frogger/blob/master/index.html)).  In the game you'll control a random character but you can change it with the key 'C' if you wish.  
+This is the source code for my take on the classic arcade game, Frogger (and you can play the game [here](http://amarillia.github.io/P3_Frogger/).  In the game you'll control a random character but you can change it with the key 'C' if you wish.  
 ![Benny](images/char-boy.png)
 ![Kitty](images/char-cat-girl.png)
 ![Demona](images/char-horn-girl.png)
